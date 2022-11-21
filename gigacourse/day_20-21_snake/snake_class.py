@@ -1,0 +1,63 @@
+from tkinter import LEFT
+from turtle import  Turtle
+
+from matplotlib.sankey import DOWN, UP
+
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
+SNAKE_COLOR = "black"
+SNAKE_SIZE = 1
+SNAKE_SHAPE = "circle"
+class Snake:
+    def __init__(self) -> None:
+        self.segments = []
+        self.create_snake()
+        self.head = self.segments[0]
+        self.head.shape("turtle")
+        
+    def create_snake(self):
+        for position in STARTING_POSITIONS:
+            self.add_segment(position)     
+            
+            
+    def add_segment(self, position):
+        new_segment = Turtle(SNAKE_SHAPE)
+        new_segment.shapesize(stretch_len=SNAKE_SIZE, stretch_wid=SNAKE_SIZE)
+        new_segment.color(SNAKE_COLOR)
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+       
+    
+    def move(self):
+        for seg_num in range(len(self.segments) - 1, 0, -1):
+            new_x = self.segments[seg_num - 1].xcor()
+            new_y = self.segments[seg_num-1].ycor()
+            self.segments[seg_num].goto(new_x, new_y)
+        self.head.forward(MOVE_DISTANCE)
+        
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
+        
+
+    def right(self):
+        if self.head.heading() != LEFT:
+            self.head.setheading(0)
+        
+    def left(self):
+        if self.head.heading() != RIGHT:
+            self.head.setheading(180)
+        
+    def up(self):
+        if self.head.heading() != DOWN:
+            self.head.setheading(90)
+        
+    def down(self):
+        if self.head.heading() != UP:
+            self.head.setheading(270)
+        
+

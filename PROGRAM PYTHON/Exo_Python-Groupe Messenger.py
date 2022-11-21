@@ -9,10 +9,11 @@ def demander_nbr():
             print("Vous n'avez pas saisi un nombre!!  VEUILLEZ REESSAYER")
     return nbr
 
+
 def confirmation():   # CONTINUER OU NON  A ENTRER DES NOMBRES
     # sourcery skip: merge-comparisons, merge-duplicate-blocks, remove-redundant-if
     condition = 0
-    while condition ==0 :
+    while condition == 0:
         confirm = input("Entrer oui pour continuer et non pour arreter : ")
         if confirm == "oui":
             condition = 1
@@ -21,26 +22,26 @@ def confirmation():   # CONTINUER OU NON  A ENTRER DES NOMBRES
         else:
             print("VEUILLEZ ENTRER oui OU non SVP!!!")
             condition = 0
-    return confirm   
-    
-      
+    return confirm
+
 
 def lancement():   # POUR LANCER LE PROGRAMME ET RECCUEULLIR LA LISTE DESORDONNEE DE L'UTILISATEUR
     liste = []
     confirm = "oui"
-    while confirm == "oui" :
+    while confirm == "oui":
         valeur = demander_nbr()
         liste.append(valeur)
         confirm = confirmation()
     print()
     print("FELICITATIONS, voila la liste que vous avez constituer : ", end=" ")
-    for i in liste : 
-        print (i, end=" ")
+    for i in liste:
+        print(i, end=" ")
     return liste
-        
+
+
 def demanderOrdre():   # POUR DEMANDER L'ORDRE DE RANGEMENT
     condition = 0
-    while condition ==0:
+    while condition == 0:
         ordre = input("""Dans quel ordre voulez vous ranger vos nombre??
                         Si c'est l'ordre croissant entrer : c 
                         Si c'est l'ordre decroissant entrer : d
@@ -52,21 +53,23 @@ def demanderOrdre():   # POUR DEMANDER L'ORDRE DE RANGEMENT
         else:
             print("VEUILLEZ ENTRER oui OU non SVP!!!")
             condition = 0
-    return ordre  
+    return ordre
+
 
 def ordreCroissant():  # POUR RANGER DANS L'ORDRE CROISSANT
     liste.sort(reverse=True)
     print("FELICITATIONS, voila vos nombres rangés dans l'ordre croissant : ", end=" ")
-    for i in liste : 
-        print (i, end=" ")
-        
+    for i in liste:
+        print(i, end=" ")
+
+
 def ordreDecroissant():   # POUR RANGER DANS L'ORDRE DECROISSANT
     liste.sort(reverse=False)
     print("FELICITATIONS, voila vos nombres rangés dans l'ordre decroissant  : ", end=" ")
-    for i in liste : 
-        print (i, end=" ")
-    
-    
+    for i in liste:
+        print(i, end=" ")
+
+
 def classement():  # POUR AFFICHER LE CLASSEMENT SELON LE CHOIX
     global ordre
     if ordre == "c":
@@ -77,8 +80,7 @@ def classement():  # POUR AFFICHER LE CLASSEMENT SELON LE CHOIX
         ordreCroissant()
         print()
         ordreDecroissant()
-        
-    
+
 
 #---PROGRAMME PRINCIPAL---#
 print("""      BIENVENUE DANS MON PROGRAMME    
@@ -90,5 +92,3 @@ print()
 ordre = demanderOrdre()
 print()
 classement()
-
-
